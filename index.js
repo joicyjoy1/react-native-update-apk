@@ -166,7 +166,9 @@ export class UpdateAPK {
     const result = data.results[0];
     const version = result.version;
     const trackViewUrl = result.trackViewUrl;
-    if (version !== RNUpdateAPK.versionName) {
+    let majorVersionCode = version.split(/[.]/)[0]
+    let appMajorVersionCode = RNUpdateAPK.versionName.split(/[.]/)[0]
+    if (majorVersionCode !== appMajorVersionCode) {
       if (this.options.needUpdateApp) {
         this.options.needUpdateApp(isUpdate => {
           if (isUpdate) {
